@@ -7,71 +7,102 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author julio
+ * @version 6/2/2021
+ * Clase que implementa las operaciones heredadas de calculadora
  */
 public class Operaciones implements calculadora {
 
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return int
+     */
     @Override
     public int suma(int x, int y) {
         int res = x + y;
         return res;
     }
 
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return res
+     */
     @Override
     public int resta(int x, int y) {
        int res2 = x-y;
        return res2;
     }
 
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return res
+     */
     @Override
     public int multiplicacion(int x, int y) {
        int res3 = x*y;
        return res3;
     }
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return res
+     */
 
     @Override
     public int division(int x, int y) {
         int res4 = x/y;
         return res4;
     }
+    /**
+     * 
+     * @param x
+     * @return int
+     */
 
     @Override
-    public int operar(Stack x) {
+    public int operar(Stack x) { //Realiza la operación indicada
          while (x.empty() == false){
-             int operandoA = (int) x.pop();
-             int operandoB = (int) x.pop();
-             String operador = (String) x.pop();
-             if ("+".equals(operador)){
-             int resp = operandoA + operandoB;
-             x.push(resp);
-         }
-             else if("-".equals(operador)){
-                 int resp = operandoA - operandoB;
-                 x.push(resp);
-             }
-             else if("*".equals(operador)){
-                 int resp = operandoA * operandoB;
-                 x.push(resp);
-             }
-             else if("/".equals(operador)){
-                 int resp = operandoA - operandoB;
-                 x.push(resp);
-             }
+             int operandoA =  Integer.valueOf((String) x.pop());
+             int operandoB =  Integer.valueOf((String) x.pop());
+             String operando = (String) x.pop();
+             if ("+".equals(operando)){
+                     int resp = suma(operandoA, operandoB);
+                     x.push(resp);
+                     System.out.println(resp);
+                     }
+             else if ("-".equals(operando)){
+                     int resp = resta(operandoA, operandoB);
+                     x.push(resp);
+                     }
+             else if ("*".equals(operando)){
+                     int resp = multiplicacion(operandoA, operandoB);
+                     x.push(resp);
+                     }
+             else if ("/".equals(operando)){
+                     int resp = division(operandoA, operandoB);
+                     x.push(resp);
+                     }
+
+             }return  (int) x.peek();
          }
          
-         return (int) x.peek();
-    }
+    /**
+     * 
+     * @param a
+     * @return String
+     */
 
     @Override
-    public String decode(String a) {
+    public String decode(String a) { //Lee el archivo .txt
        File archivo = new File (a);
        FileReader fr = null;
         try {
@@ -87,10 +118,9 @@ public class Operaciones implements calculadora {
         } catch (IOException ex) {
             Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
+
        return linea;
-
-      }
-
+    }
     }
     
 

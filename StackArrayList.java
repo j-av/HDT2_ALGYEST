@@ -1,5 +1,9 @@
 import java.util.ArrayList;
-
+/**
+ * 
+ * @author Interface dada en clase
+ * @param <E> 
+ */
 public class StackArrayList<E>
  implements Stack<E>
 {

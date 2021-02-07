@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author interface que se brindó en la clase
+ * @param <E> 
+ */
+
 public interface Stack<E> 
 {
 
